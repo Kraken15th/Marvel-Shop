@@ -117,27 +117,6 @@
       }
     }
 
-    .pillow-swatch {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all .3s ease;
-      border: 3px solid transparent;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
-    }
-
-    .pillow-swatch:hover {
-      transform: scale(1.15);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2)
-    }
-
-    .pillow-swatch.selected {
-      border-color: #B87333;
-      box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.3);
-      transform: scale(1.1)
-    }
-
     .btn-copper {
       background: linear-gradient(135deg, #B87333, #8B5A2B);
       color: #fff;
@@ -547,8 +526,7 @@
               id="sumSofaColor" class="font-bold text-espresso">—</span></div>
           <div class="flex justify-between items-center"><span class="text-gray-600">لون القاعدة المعدنية:</span><span
               id="sumBaseColor" class="font-bold text-espresso">—</span></div>
-          <div class="flex justify-between items-center"><span class="text-gray-600">لون الوسائد:</span><span
-              id="sumPillowColor" class="font-bold text-espresso">—</span></div>
+
           <div class="flex justify-between items-center"><span class="text-gray-600">سعر المنتج:</span><span
               id="sumPrice" class="font-bold text-espresso">0 جنيه</span></div>
           <div class="flex justify-between items-center"><span class="text-gray-600">رسوم الشحن:</span><span
@@ -680,16 +658,7 @@
       { id: 'green', name: 'أخضر', imgBlack: 'assets/sofa-green-black.jpeg', imgWhite: 'assets/sofa-green-white.jpeg' }
     ];
 
-    const pillowOptions = [
-      { name: 'بيج', color: '#EDE4DA' },
-      { name: 'أبيض', color: '#FFFFFF', border: true },
-      { name: 'أسود', color: '#1a1a1a' },
-      { name: 'رمادي', color: '#8D8D8D' },
-      { name: 'بني', color: '#8B6914' },
-      { name: 'زيتوني', color: '#556B2F' },
-      { name: 'كحلي', color: '#0A1F5C' },
-      { name: 'تيراكوتا', color: '#C96B3C' }
-    ];
+
 
     const tier2 = ['الإسكندرية', 'الدقهلية', 'البحيرة', 'الشرقية', 'القليوبية', 'كفر الشيخ', 'الغربية', 'المنوفية', 'الفيوم'];
     const tier3 = ['بني سويف', 'المنيا', 'أسيوط', 'سوهاج', 'قنا', 'الأقصر', 'أسوان', 'البحر الأحمر', 'جنوب سيناء', 'بورسعيد', 'دمياط', 'الإسماعيلية', 'السويس'];
@@ -697,7 +666,6 @@
     // ===== STATE =====
     let selectedSofa = null;
     let whiteBase = false;
-    let selectedPillow = null;
 
     // ===== RENDER SOFA CARDS =====
     function renderSofas() {
@@ -723,16 +691,7 @@
   `).join('');
     }
 
-    // ===== RENDER PILLOW COLORS =====
-    function renderPillows() {
-      const container = document.getElementById('pillowColors');
-      container.innerHTML = pillowOptions.map(p => `
-    <div class="text-center" onclick="selectPillowColor('${p.name}')">
-      <div class="pillow-swatch mx-auto" data-name="${p.name}" style="background:${p.color};${p.border ? 'border:2px solid #ddd' : ''}"></div>
-      <p class="text-xs mt-1.5 font-semibold text-gray-600">${p.name}</p>
-    </div>
-  `).join('');
-    }
+
 
     // ===== SELECT SOFA =====
     function selectSofa(id) {
@@ -765,16 +724,7 @@
       }
     }
 
-    // ===== SELECT PILLOW COLOR =====
-    function selectPillowColor(name) {
-      selectedPillow = name;
-      document.querySelectorAll('.pillow-swatch').forEach(sw => {
-        sw.classList.toggle('selected', sw.dataset.name === name);
-      });
-      document.getElementById('pillowLabel').textContent = 'اللون المختار: ' + name;
-      document.getElementById('pillowLabel').classList.replace('text-gray-500', 'text-copper');
-      updateSummary();
-    }
+
 
     // ===== SHIPPING CALCULATION =====
     function getShippingCost(city) {
@@ -794,7 +744,6 @@
 
       document.getElementById('sumSofaColor').textContent = sofaObj ? sofaObj.name : '—';
       document.getElementById('sumBaseColor').textContent = selectedSofa ? (whiteBase ? 'أبيض' : 'أسود') : '—';
-      document.getElementById('sumPillowColor').textContent = selectedPillow || '—';
       document.getElementById('sumPrice').textContent = price.toLocaleString() + ' جنيه';
       document.getElementById('sumShipping').textContent = shipping.toLocaleString() + ' جنيه';
       document.getElementById('sumTotal').textContent = total.toLocaleString() + ' جنيه';
@@ -809,7 +758,6 @@
       e.preventDefault();
 
       if (!selectedSofa) { alert('⚠️ الرجاء اختيار لون الكنبة'); return; }
-      if (!selectedPillow) { alert('⚠️ الرجاء اختيار لون الوسائد'); return; }
 
       const name = document.getElementById('fullName').value;
       const phone1 = document.getElementById('primaryPhone').value;
@@ -827,7 +775,6 @@
       msg += ` *تفاصيل المنتج:*\n`;
       msg += ` • الموديل: كنبة ٣ مقاعد + ٢ وسادة + قاعدة معدنية\n`;
       msg += ` • لون القماش: ${sofaObj.name}\n`;
-      msg += ` • لون الوسائد: ${selectedPillow}\n`;
       msg += ` • لون القاعدة المعدنية: ${baseColor}\n\n`;
       msg += ` *بيانات العميل:*\n`;
       msg += ` • الاسم: ${name}\n`;
@@ -981,7 +928,6 @@
 
     // ===== INIT =====
     renderSofas();
-    renderPillows();
     updateSummary();
     initCountdown();
   </script>

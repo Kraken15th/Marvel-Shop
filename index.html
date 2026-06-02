@@ -6,6 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marvel Store - أثاث فاخر مصنوع بإتقان</title>
   <meta name="description" content="Marvel Store - تجربة تخصيص أثاث فاخر. صمم كنبتك المثالية بألوان وخامات حصرية.">
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '421363071053341');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=421363071053341&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel Code -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <script>
@@ -209,13 +228,75 @@
       height: 2px;
       background: linear-gradient(90deg, transparent, #B87333, transparent)
     }
+
+    /* Summer Sale Countdown */
+    .sale-banner {
+      background: linear-gradient(135deg, #754616 0%, #7a4c07 50%, #623c0f 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sale-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+      animation: saleSweep 3s ease-in-out infinite;
+    }
+
+    @keyframes saleSweep {
+      0% {
+        left: -100%
+      }
+
+      100% {
+        left: 100%
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.15)
+      }
+    }
+
+    .pulse-icon {
+      display: inline-block;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .price-old {
+      text-decoration: line-through;
+      text-decoration-color: #ff4444;
+      text-decoration-thickness: 3px;
+      opacity: 0.6;
+    }
+
+    .countdown-digit {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-variant-numeric: tabular-nums;
+      min-width: 42px;
+      display: inline-block;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body class="min-h-screen">
 
   <!-- Sticky WhatsApp -->
-  <a href="https://wa.me/201558782200" target="_blank"
+  <a href="https://wa.me/201044231348" target="_blank"
     class="fixed bottom-24 left-5 z-50 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-lg flex items-center gap-2 transition-all hover:scale-105">
     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
       <path
@@ -233,16 +314,54 @@
         class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-2xl shadow-2xl mb-6 object-cover border-2 border-copper/30"
         loading="eager">
       <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">Marvel Store</h1>
-      <p class="text-xl md:text-2xl font-light text-copper-light mb-3">صمّم كنبتك المثالية</p>
-      <p class="text-base md:text-lg text-white/60 max-w-xl mx-auto mb-8">تجربة تخصيص فريدة لأثاث فاخر مصنوع بإتقان —
+      <p class="text-xl md:text-4xl font-black text-copper-light mb-4 tracking-wide">عرض الكنبة ال 3 أفراد</p>
+      <p class="text-base md:text-lg text-white/60 max-w-xl mx-auto mb-6">أثاث فاخر مصنوع بإتقان —
         اختر اللون، وخصّص التفاصيل، واستلم حتى باب بيتك</p>
-      <a href="#configure"
-        class="btn-copper inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold shadow-xl">
-        <span>ابدأ التصميم الآن</span>
-        <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
+
+      <!-- SUMMER SALE BANNER -->
+      <div id="saleBanner" class="sale-banner rounded-2xl px-6 py-5 max-w-2xl mx-auto mb-8 relative z-10 shadow-2xl">
+        <div class="flex flex-col items-center gap-3">
+          <div class="flex items-center gap-2">
+            <h3 class="text-xl md:text-2xl font-black text-white tracking-wide">عرض الصيف</h3>
+          </div>
+          <div class="flex items-center gap-3 md:gap-4">
+            <span class="price-old text-lg md:text-xl font-bold text-white/80">27,000 جنيه</span>
+            <svg class="w-5 h-5 text-yellow-300 rotate-180" fill="none" stroke="currentColor" stroke-width="3"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+            <span class="text-2xl md:text-3xl font-black text-yellow-300 drop-shadow-lg">22,500 جنيه</span>
+          </div>
+          <div class="flex items-center gap-2 text-white/90 text-sm md:text-base">
+            <span>⏰ العرض ينتهي خلال:</span>
+            <div class="flex items-center gap-1 font-bold text-base md:text-lg" dir="ltr">
+              <span id="cdHours" class="countdown-digit">00</span>
+              <span class="text-yellow-300">:</span>
+              <span id="cdMinutes" class="countdown-digit">00</span>
+              <span class="text-yellow-300">:</span>
+              <span id="cdSeconds" class="countdown-digit">00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="flex items-center justify-center gap-5 mt-8">
+        <a href="https://www.facebook.com/share/1GSgirUxJ3/" target="_blank"
+          class="w-11 h-11 rounded-full bg-white/10 hover:bg-copper/30 flex items-center justify-center transition-all duration-300 hover:scale-110 border border-white/20">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/marvelsteel1?igsh=MTB1bXM0eG50ZHlvaA==" target="_blank"
+          class="w-11 h-11 rounded-full bg-white/10 hover:bg-copper/30 flex items-center justify-center transition-all duration-300 hover:scale-110 border border-white/20">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+          </svg>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -252,102 +371,145 @@
       <h2 class="text-3xl md:text-4xl font-black text-center text-espresso mb-3">لماذا <span class="text-copper">Marvel
           Store</span>؟</h2>
       <div class="copper-divider w-20 mx-auto mb-12"></div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
-        <div
-          class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group">
-          <div
-            class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          </div>
-          <div class="relative z-10">
-            <div class="w-full h-36 md:h-44 overflow-hidden">
-              <img src="assets/sofa-detail-1.jpeg" alt="صناعة متقنة"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy">
+
+      <!-- Slider Container -->
+      <div class="relative group/slider">
+        <!-- Prev/Next Arrows -->
+        <button onclick="slideFeatures(-1)"
+          class="absolute top-1/2 -translate-y-1/2 right-0 md:-right-5 z-20 w-10 h-10 rounded-full bg-espresso/80 hover:bg-copper text-white flex items-center justify-center shadow-lg transition-all opacity-0 group-hover/slider:opacity-100 backdrop-blur-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+        <button onclick="slideFeatures(1)"
+          class="absolute top-1/2 -translate-y-1/2 left-0 md:-left-5 z-20 w-10 h-10 rounded-full bg-espresso/80 hover:bg-copper text-white flex items-center justify-center shadow-lg transition-all opacity-0 group-hover/slider:opacity-100 backdrop-blur-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <!-- Slides Track Wrapper -->
+        <div class="overflow-hidden w-full">
+          <div id="featureSlider" class="flex gap-5 md:gap-8 w-full flex-nowrap">
+
+            <!-- Slide 1 -->
+            <div
+              class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
+              <div
+                class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group h-full">
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+                <div class="relative z-10">
+                  <div class="w-full h-36 md:h-44 overflow-hidden">
+                    <img src="assets/sofa-detail-1.jpeg" alt="صناعة متقنة"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy">
+                  </div>
+                  <div class="px-4 py-4 md:py-5">
+                    <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">كنبة ٣ مقاعد ٢٠٠ سم * ٧٥ سم</h3>
+                    <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة ارتفاع ٤٥ سم
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="px-4 py-4 md:py-5">
-              <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">كنبة ٣ مقاعد ٢٠٠ سم * ٧٥ سم </h3>
-              <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة
-                ارتفاع ٤٥ سم</p>
+
+            <!-- Slide 2 -->
+            <div
+              class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
+              <div
+                class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group h-full">
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+                <div class="relative z-10">
+                  <div class="w-full h-36 md:h-44 overflow-hidden">
+                    <img src="assets/sofa-detail-2.jpeg" alt="ألوان مخصصة"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy">
+                  </div>
+                  <div class="px-4 py-4 md:py-5">
+                    <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">كنبة مقعدين ١٤٠ سم* ٧٥ سم</h3>
+                    <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة ارتفاع ٤٥ سم
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div
-          class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group">
-          <div
-            class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          </div>
-          <div class="relative z-10">
-            <div class="w-full h-36 md:h-44 overflow-hidden">
-              <img src="assets/sofa-detail-2.jpeg" alt="ألوان مخصصة"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy">
+
+            <!-- Slide 3 -->
+            <div
+              class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
+              <div
+                class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group h-full">
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+                <div class="relative z-10">
+                  <div class="w-full h-36 md:h-44 overflow-hidden">
+                    <img src="assets/sofa-detail-3.jpeg" alt="إسفنج عالي الكثافة"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy">
+                  </div>
+                  <div class="px-4 py-4 md:py-5">
+                    <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">مقاس ٧٥ سم</h3>
+                    <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة ارتفاع ٤٥ سم
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="px-4 py-4 md:py-5">
-              <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">كنبة مقعدين ١٤٠ سم* ٧٥ سم
-              </h3>
-              <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة
-                ارتفاع ٤٥ سم</p>
+
+            <!-- Slide 4 -->
+            <div
+              class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
+              <div
+                class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group h-full">
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+                <div class="relative z-10">
+                  <div class="w-full h-36 md:h-44 overflow-hidden">
+                    <img src="assets/sofa-detail-4.jpeg" alt="قطاع ستيل"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy">
+                  </div>
+                  <div class="px-4 py-4 md:py-5">
+                    <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">قطاع ستيل ٨ * ٤</h3>
+                    <p class="text-xs md:text-sm text-white/50">سمك مللي ونص</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div
-          class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group">
-          <div
-            class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          </div>
-          <div class="relative z-10">
-            <div class="w-full h-36 md:h-44 overflow-hidden">
-              <img src="assets/sofa-detail-3.jpeg" alt="إسفنج عالي الكثافة"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy">
+
+            <!-- Slide 5 -->
+            <div
+              class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
+              <div
+                class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group h-full">
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+                <div class="relative z-10">
+                  <div class="w-full h-36 md:h-44 overflow-hidden">
+                    <img src="assets/sofa-detail-5.jpeg" alt="اسفنج"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy">
+                  </div>
+                  <div class="px-4 py-4 md:py-5">
+                    <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">اسفنج كثافة ٣٠ مرونه medium</h3>
+                    <p class="text-xs md:text-sm text-white/50">ارتفاع ١٣ سم بطبقة فايبر وقماش وتربرووف</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="px-4 py-4 md:py-5">
-              <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">مقاس ٧٥ سم
-              </h3>
-              <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة
-                ارتفاع ٤٥ سم</p>
-            </div>
-          </div>
-        </div>
-        <div
-          class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group">
-          <div
-            class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          </div>
-          <div class="relative z-10">
-            <div class="w-full h-36 md:h-44 overflow-hidden">
-              <img src="assets/sofa-detail-4.jpeg" alt="توصيل سريع"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy">
-            </div>
-            <div class="px-4 py-4 md:py-5">
-              <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">قطاع ستيل
-                ٨ * ٤</h3>
-              <p class="text-xs md:text-sm text-white/50">سمك مللي ونص</p>
-            </div>
+
           </div>
         </div>
 
-        <div
-          class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group">
-          <div
-            class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          </div>
-          <div class="relative z-10">
-            <div class="w-full h-36 md:h-44 overflow-hidden">
-              <img src="assets/sofa-detail-5.jpeg" alt="توصيل سريع"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy">
-            </div>
-            <div class="px-4 py-4 md:py-5">
-              <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">اسفنج كثافة ٣٠
-                مرونه medium </h3>
-              <p class="text-xs md:text-sm text-white/50">ارتفاع ١٣ سم
-                بطبقة فايبر
-                وقماش وتربرووف</p>
-            </div>
-          </div>
-        </div>
+        <!-- Dots Navigation -->
+        <div id="featureDots" class="flex justify-center gap-2 mt-6"></div>
       </div>
     </div>
   </section>
@@ -480,31 +642,36 @@
     </div>
   </section>
 
-  <!-- STICKY MOBILE CTA -->
-  <div id="stickyCTA"
-    class="sticky-order bg-white/95 backdrop-blur-md border-t border-copper/10 shadow-2xl px-4 py-3 md:hidden">
-    <a href="#configure"
-      class="btn-copper w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-base">
-      <span id="stickyText">ابدأ تصميم كنبتك</span>
-      <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-      </svg>
-    </a>
-  </div>
-
   <!-- FOOTER -->
   <footer class="bg-espresso text-white py-8">
     <div class="container mx-auto px-4 text-center">
       <img src="assets/logo1.jpeg" alt="Marvel Store" class="w-12 h-12 mx-auto rounded-lg mb-3 object-cover opacity-80">
       <p class="text-base font-semibold">© 2026 Marvel Store - جميع الحقوق محفوظة</p>
       <p class="mt-1 text-white/40 text-sm">صُنع بإتقان لعشاق الأثاث الفاخر</p>
+      <div class="flex items-center justify-center gap-4 mt-4">
+        <a href="https://www.facebook.com/share/1GSgirUxJ3/" target="_blank"
+          class="w-10 h-10 rounded-full bg-white/10 hover:bg-copper/30 flex items-center justify-center transition-all duration-300 hover:scale-110 border border-white/10">
+          <svg class="w-5 h-5 text-white/70 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/marvelsteel1?igsh=MTB1bXM0eG50ZHlvaA==" target="_blank"
+          class="w-10 h-10 rounded-full bg-white/10 hover:bg-copper/30 flex items-center justify-center transition-all duration-300 hover:scale-110 border border-white/10">
+          <svg class="w-5 h-5 text-white/70 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+          </svg>
+        </a>
+      </div>
     </div>
   </footer>
 
   <script>
     // ===== DATA =====
-    const WHATSAPP = '201558782200';
-    const BASE_PRICE = 23000;
+    const WHATSAPP = '201044231348';
+    const OLD_PRICE = 27000;
+    const BASE_PRICE = 22500;
 
     const sofas = [
       { id: 'beige', name: 'بيج', imgBlack: 'assets/sofa-beige-black.jpeg', imgWhite: 'assets/sofa-beige-white.jpeg' },
@@ -549,7 +716,10 @@
           <input type="checkbox" id="base-${s.id}" class="w-4 h-4 accent-copper rounded cursor-pointer base-checkbox" onchange="toggleBase('${s.id}', this.checked)">
           <label for="base-${s.id}" class="text-sm text-espresso font-semibold cursor-pointer select-none">تغيير القاعدة إلى أبيض</label>
         </div>
-        <div class="text-center bg-gradient-to-r from-espresso to-espresso-mid text-white py-2.5 rounded-xl font-bold text-lg">${BASE_PRICE.toLocaleString()} جنيه</div>
+        <div class="text-center bg-gradient-to-r from-espresso to-espresso-mid text-white py-2.5 rounded-xl font-bold">
+          <span class="price-old text-sm text-white/50">${OLD_PRICE.toLocaleString()} جنيه</span>
+          <span class="text-lg text-yellow-300 mr-2">${BASE_PRICE.toLocaleString()} جنيه</span>
+        </div>
       </div>
     </div>
   `).join('');
@@ -667,8 +837,9 @@
       if (phone2) msg += ` • هاتف ثانوي: ${phone2}\n`;
       msg += ` • المحافظة: ${city}\n`;
       msg += ` • العنوان: ${address}\n\n`;
-      msg += ` *الفاتورة:*\n`;
-      msg += ` • سعر المنتج: ${BASE_PRICE.toLocaleString()} جنيه\n`;
+      msg += ` *الفاتورة (عرض الصيف):*\n`;
+      msg += ` • السعر الأصلي: ~${OLD_PRICE.toLocaleString()}~ جنيه\n`;
+      msg += ` • سعر العرض: ${BASE_PRICE.toLocaleString()} جنيه\n`;
       msg += ` • رسوم الشحن: ${shipping.toLocaleString()} جنيه\n`;
       msg += ` • الإجمالي: ${total.toLocaleString()} جنيه\n\n`;
       msg += `━━━━━━━━━━━━━━━━━\n`;
@@ -684,10 +855,137 @@
       stickyCTA?.classList.toggle('visible', window.scrollY > 500);
     });
 
+    // ===== FEATURE SLIDER =====
+    (function() {
+      const slider = document.getElementById('featureSlider');
+      const slides = slider.querySelectorAll('.feature-slide');
+      const dotsContainer = document.getElementById('featureDots');
+      const totalSlides = slides.length;
+      let currentIndex = 0;
+      let autoSlideInterval;
+      let isPaused = false;
+
+      function getVisibleCount() {
+        return window.innerWidth >= 768 ? 4 : 2;
+      }
+
+      function getMaxIndex() {
+        return Math.max(0, totalSlides - getVisibleCount());
+      }
+
+      function updateSlider() {
+        const slideEl = slides[0];
+        const gap = window.innerWidth >= 768 ? 32 : 20; // gap-8 = 32px, gap-5 = 20px
+        const slideWidth = slideEl.offsetWidth + gap;
+        // RTL: use positive translateX to go "forward"
+        slider.style.transform = `translateX(${currentIndex * slideWidth}px)`;
+        slider.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        updateDots();
+      }
+
+      function updateDots() {
+        const maxIdx = getMaxIndex();
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i <= maxIdx; i++) {
+          const dot = document.createElement('button');
+          dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-copper w-7' : 'bg-gray-300 hover:bg-copper/50'}`;
+          dot.onclick = () => { currentIndex = i; updateSlider(); resetAutoSlide(); };
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      window.slideFeatures = function(dir) {
+        const maxIdx = getMaxIndex();
+        currentIndex += dir;
+        if (currentIndex > maxIdx) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = maxIdx;
+        updateSlider();
+        resetAutoSlide();
+      };
+
+      function autoSlide() {
+        autoSlideInterval = setInterval(() => {
+          if (!isPaused) {
+            const maxIdx = getMaxIndex();
+            currentIndex++;
+            if (currentIndex > maxIdx) currentIndex = 0;
+            updateSlider();
+          }
+        }, 3000);
+      }
+
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlide();
+      }
+
+      // Pause on hover
+      const sliderParent = slider.closest('.group\\/slider');
+      sliderParent.addEventListener('mouseenter', () => { isPaused = true; });
+      sliderParent.addEventListener('mouseleave', () => { isPaused = false; });
+
+      // Touch/Swipe support
+      let touchStartX = 0;
+      slider.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; isPaused = true; }, { passive: true });
+      slider.addEventListener('touchend', (e) => {
+        const diff = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(diff) > 50) {
+          // RTL: swipe left = next (positive diff in RTL means go left visually)
+          slideFeatures(diff > 0 ? 1 : -1);
+        }
+        isPaused = false;
+      }, { passive: true });
+
+      // Recalculate on resize
+      window.addEventListener('resize', () => {
+        if (currentIndex > getMaxIndex()) currentIndex = getMaxIndex();
+        updateSlider();
+      });
+
+      // Init
+      updateSlider();
+      autoSlide();
+    })();
+
+    // ===== COUNTDOWN TIMER =====
+    function initCountdown() {
+      const TIMER_KEY = 'marvel_sale_start';
+      const DURATION = 24 * 60 * 60 * 1000; // 24 hours in ms
+
+      let startTime = localStorage.getItem(TIMER_KEY);
+      if (!startTime || (Date.now() - parseInt(startTime)) >= DURATION) {
+        startTime = Date.now().toString();
+        localStorage.setItem(TIMER_KEY, startTime);
+      }
+
+      function updateTimer() {
+        const elapsed = Date.now() - parseInt(startTime);
+        const remaining = Math.max(0, DURATION - elapsed);
+
+        if (remaining <= 0) {
+          // Reset the timer for another 24 hours
+          startTime = Date.now().toString();
+          localStorage.setItem(TIMER_KEY, startTime);
+        }
+
+        const hours = Math.floor(remaining / (1000 * 60 * 60));
+        const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+        document.getElementById('cdHours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('cdMinutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('cdSeconds').textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
+
     // ===== INIT =====
     renderSofas();
     renderPillows();
     updateSummary();
+    initCountdown();
   </script>
 </body>
 

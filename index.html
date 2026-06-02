@@ -393,8 +393,7 @@
           <div id="featureSlider" class="flex gap-5 md:gap-8 w-full flex-nowrap">
 
             <!-- Slide 1 -->
-            <div
-              class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
+            <div class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
               <div
                 class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group h-full">
                 <div
@@ -408,7 +407,8 @@
                   </div>
                   <div class="px-4 py-4 md:py-5">
                     <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">كنبة ٣ مقاعد ٢٠٠ سم * ٧٥ سم</h3>
-                    <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة ارتفاع ٤٥ سم
+                    <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة ارتفاع ٤٥
+                      سم
                     </p>
                   </div>
                 </div>
@@ -416,8 +416,7 @@
             </div>
 
             <!-- Slide 2 -->
-            <div
-              class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
+            <div class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
               <div
                 class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group h-full">
                 <div
@@ -431,7 +430,8 @@
                   </div>
                   <div class="px-4 py-4 md:py-5">
                     <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">كنبة مقعدين ١٤٠ سم* ٧٥ سم</h3>
-                    <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة ارتفاع ٤٥ سم
+                    <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة ارتفاع ٤٥
+                      سم
                     </p>
                   </div>
                 </div>
@@ -439,8 +439,7 @@
             </div>
 
             <!-- Slide 3 -->
-            <div
-              class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
+            <div class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
               <div
                 class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group h-full">
                 <div
@@ -454,7 +453,8 @@
                   </div>
                   <div class="px-4 py-4 md:py-5">
                     <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">مقاس ٧٥ سم</h3>
-                    <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة ارتفاع ٤٥ سم
+                    <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة ارتفاع ٤٥
+                      سم
                     </p>
                   </div>
                 </div>
@@ -462,8 +462,7 @@
             </div>
 
             <!-- Slide 4 -->
-            <div
-              class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
+            <div class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
               <div
                 class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group h-full">
                 <div
@@ -484,8 +483,7 @@
             </div>
 
             <!-- Slide 5 -->
-            <div
-              class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
+            <div class="feature-slide min-w-[calc(50%-10px)] md:min-w-[calc(25%-24px)] flex-shrink-0">
               <div
                 class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group h-full">
                 <div
@@ -856,7 +854,7 @@
     });
 
     // ===== FEATURE SLIDER =====
-    (function() {
+    (function () {
       const slider = document.getElementById('featureSlider');
       const slides = slider.querySelectorAll('.feature-slide');
       const dotsContainer = document.getElementById('featureDots');
@@ -894,7 +892,7 @@
         }
       }
 
-      window.slideFeatures = function(dir) {
+      window.slideFeatures = function (dir) {
         const maxIdx = getMaxIndex();
         currentIndex += dir;
         if (currentIndex > maxIdx) currentIndex = 0;

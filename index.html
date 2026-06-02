@@ -1,262 +1,543 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marvel Store - أثاث فاخر مصنوع بإتقان</title>
-<meta name="description" content="Marvel Store - تجربة تخصيص أثاث فاخر. صمم كنبتك المثالية بألوان وخامات حصرية.">
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-<script>
-tailwind.config={theme:{extend:{colors:{copper:'#B87333','copper-light':'#D4956A','copper-dark':'#8B5A2B',espresso:'#1A0E0A','espresso-mid':'#3A2218',cream:'#FAF7F4','cream-dark':'#F0EBE3',bronze:'#CD7F32'},fontFamily:{cairo:['Cairo','sans-serif']}}}}
-</script>
-<style>
-body{font-family:'Cairo',sans-serif;background:#FAF7F4}
-.hero-bg{background:linear-gradient(135deg,#0F0A07 0%,#1A0E0A 40%,#3A2218 100%);position:relative;overflow:hidden}
-.hero-bg::before{content:'';position:absolute;top:-50%;right:-30%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(184,115,51,0.15) 0%,transparent 70%);animation:heroGlow 8s ease-in-out infinite}
-@keyframes heroGlow{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-3%,2%) scale(1.1)}}
-.glass{background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border:1px solid rgba(184,115,51,0.1)}
-.sofa-card{transition:all .4s cubic-bezier(.25,.46,.45,.94);border:2px solid transparent;cursor:pointer}
-.sofa-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(184,115,51,0.15)}
-.sofa-card.selected{border-color:#B87333;box-shadow:0 0 0 3px rgba(184,115,51,0.2),0 20px 40px rgba(184,115,51,0.2)}
-.sofa-card.selected::after{content:'✓';position:absolute;top:12px;left:12px;width:32px;height:32px;background:#B87333;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;z-index:10;animation:checkPop .3s ease}
-@keyframes checkPop{from{transform:scale(0)}to{transform:scale(1)}}
-.pillow-swatch{width:52px;height:52px;border-radius:50%;cursor:pointer;transition:all .3s ease;border:3px solid transparent;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
-.pillow-swatch:hover{transform:scale(1.15);box-shadow:0 4px 16px rgba(0,0,0,0.2)}
-.pillow-swatch.selected{border-color:#B87333;box-shadow:0 0 0 3px rgba(184,115,51,0.3);transform:scale(1.1)}
-.btn-copper{background:linear-gradient(135deg,#B87333,#8B5A2B);color:#fff;transition:all .3s ease;position:relative;overflow:hidden}
-.btn-copper:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(184,115,51,0.4)}
-.btn-copper::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);animation:shimmer 3s ease-in-out infinite}
-@keyframes shimmer{0%{left:-100%}50%{left:100%}100%{left:100%}}
-.feature-card{transition:all .4s ease}
-.feature-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.08)}
-.sticky-order{position:fixed;bottom:0;left:0;right:0;z-index:50;transform:translateY(100%);transition:transform .4s ease}
-.sticky-order.visible{transform:translateY(0)}
-input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px rgba(184,115,51,0.15);border-color:#B87333!important;outline:none}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.fade-up{animation:fadeUp .6s ease forwards}
-.copper-divider{height:2px;background:linear-gradient(90deg,transparent,#B87333,transparent)}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marvel Store - أثاث فاخر مصنوع بإتقان</title>
+  <meta name="description" content="Marvel Store - تجربة تخصيص أثاث فاخر. صمم كنبتك المثالية بألوان وخامات حصرية.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = { theme: { extend: { colors: { copper: '#B87333', 'copper-light': '#D4956A', 'copper-dark': '#8B5A2B', espresso: '#1A0E0A', 'espresso-mid': '#3A2218', cream: '#FAF7F4', 'cream-dark': '#F0EBE3', bronze: '#CD7F32' }, fontFamily: { cairo: ['Cairo', 'sans-serif'] } } } }
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #FAF7F4
+    }
+
+    .hero-bg {
+      background: linear-gradient(135deg, #0F0A07 0%, #1A0E0A 40%, #3A2218 100%);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184, 115, 51, 0.15) 0%, transparent 70%);
+      animation: heroGlow 8s ease-in-out infinite
+    }
+
+    @keyframes heroGlow {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1)
+      }
+
+      50% {
+        transform: translate(-3%, 2%) scale(1.1)
+      }
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(184, 115, 51, 0.1)
+    }
+
+    .sofa-card {
+      transition: all .4s cubic-bezier(.25, .46, .45, .94);
+      border: 2px solid transparent;
+      cursor: pointer
+    }
+
+    .sofa-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(184, 115, 51, 0.15)
+    }
+
+    .sofa-card.selected {
+      border-color: #B87333;
+      box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.2), 0 20px 40px rgba(184, 115, 51, 0.2)
+    }
+
+    .sofa-card.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 32px;
+      height: 32px;
+      background: #B87333;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      z-index: 10;
+      animation: checkPop .3s ease
+    }
+
+    @keyframes checkPop {
+      from {
+        transform: scale(0)
+      }
+
+      to {
+        transform: scale(1)
+      }
+    }
+
+    .pillow-swatch {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all .3s ease;
+      border: 3px solid transparent;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
+    }
+
+    .pillow-swatch:hover {
+      transform: scale(1.15);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2)
+    }
+
+    .pillow-swatch.selected {
+      border-color: #B87333;
+      box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.3);
+      transform: scale(1.1)
+    }
+
+    .btn-copper {
+      background: linear-gradient(135deg, #B87333, #8B5A2B);
+      color: #fff;
+      transition: all .3s ease;
+      position: relative;
+      overflow: hidden
+    }
+
+    .btn-copper:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(184, 115, 51, 0.4)
+    }
+
+    .btn-copper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shimmer 3s ease-in-out infinite
+    }
+
+    @keyframes shimmer {
+      0% {
+        left: -100%
+      }
+
+      50% {
+        left: 100%
+      }
+
+      100% {
+        left: 100%
+      }
+    }
+
+    .feature-card {
+      transition: all .4s ease
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(184, 115, 51, 0.25), 0 0 20px rgba(184, 115, 51, 0.1);
+      border-color: rgba(184, 115, 51, 0.5)
+    }
+
+    .sticky-order {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      transform: translateY(100%);
+      transition: transform .4s ease
+    }
+
+    .sticky-order.visible {
+      transform: translateY(0)
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.15);
+      border-color: #B87333 !important;
+      outline: none
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .fade-up {
+      animation: fadeUp .6s ease forwards
+    }
+
+    .copper-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #B87333, transparent)
+    }
+  </style>
 </head>
+
 <body class="min-h-screen">
 
-<!-- Sticky WhatsApp -->
-<a href="https://wa.me/201558782200" target="_blank" class="fixed bottom-24 left-5 z-50 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-lg flex items-center gap-2 transition-all hover:scale-105">
-<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.469A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.115 0-4.142-.682-5.813-1.941l-.417-.312-2.742.871.878-2.683-.34-.432A9.71 9.71 0 012.25 12 9.75 9.75 0 0112 2.25 9.75 9.75 0 0121.75 12 9.75 9.75 0 0112 21.75z"/></svg>
-<span class="font-semibold text-sm">تواصل معنا</span>
-</a>
+  <!-- Sticky WhatsApp -->
+  <a href="https://wa.me/201558782200" target="_blank"
+    class="fixed bottom-24 left-5 z-50 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-lg flex items-center gap-2 transition-all hover:scale-105">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+      <path
+        d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.625-1.469A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.115 0-4.142-.682-5.813-1.941l-.417-.312-2.742.871.878-2.683-.34-.432A9.71 9.71 0 012.25 12 9.75 9.75 0 0112 2.25 9.75 9.75 0 0121.75 12 9.75 9.75 0 0112 21.75z" />
+    </svg>
+    <span class="font-semibold text-sm">تواصل معنا</span>
+  </a>
 
-<!-- HERO -->
-<header class="hero-bg text-white py-16 md:py-24">
-<div class="container mx-auto px-4 text-center relative z-10">
-<img src="assets/logo1.jpeg" alt="Marvel Store" class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-2xl shadow-2xl mb-6 object-cover border-2 border-copper/30" loading="eager">
-<h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">Marvel Store</h1>
-<p class="text-xl md:text-2xl font-light text-copper-light mb-3">صمّم كنبتك المثالية</p>
-<p class="text-base md:text-lg text-white/60 max-w-xl mx-auto mb-8">تجربة تخصيص فريدة لأثاث فاخر مصنوع بإتقان — اختر اللون، وخصّص التفاصيل، واستلم حتى باب بيتك</p>
-<a href="#configure" class="btn-copper inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold shadow-xl">
-<span>ابدأ التصميم الآن</span>
-<svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-</a>
-</div>
-</header>
+  <!-- HERO -->
+  <header class="hero-bg text-white py-16 md:py-24">
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <img src="assets/logo1.jpeg" alt="Marvel Store"
+        class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-2xl shadow-2xl mb-6 object-cover border-2 border-copper/30"
+        loading="eager">
+      <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">Marvel Store</h1>
+      <p class="text-xl md:text-2xl font-light text-copper-light mb-3">صمّم كنبتك المثالية</p>
+      <p class="text-base md:text-lg text-white/60 max-w-xl mx-auto mb-8">تجربة تخصيص فريدة لأثاث فاخر مصنوع بإتقان —
+        اختر اللون، وخصّص التفاصيل، واستلم حتى باب بيتك</p>
+      <a href="#configure"
+        class="btn-copper inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-bold shadow-xl">
+        <span>ابدأ التصميم الآن</span>
+        <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </header>
 
-<!-- WHY MARVEL -->
-<section class="py-16 md:py-24">
-<div class="max-w-6xl mx-auto px-4">
-<h2 class="text-3xl md:text-4xl font-black text-center text-espresso mb-3">لماذا <span class="text-copper">Marvel Store</span>؟</h2>
-<div class="copper-divider w-20 mx-auto mb-12"></div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-<div class="feature-card bg-white rounded-2xl p-6 text-center shadow-md border border-cream-dark">
-<div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-copper/10 to-copper/5 flex items-center justify-center text-2xl">🏗️</div>
-<h3 class="font-bold text-espresso mb-1 text-sm md:text-base">صناعة متقنة</h3>
-<p class="text-xs text-gray-500">هيكل معدني قوي يدوم سنين</p>
-</div>
-<div class="feature-card bg-white rounded-2xl p-6 text-center shadow-md border border-cream-dark">
-<div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-copper/10 to-copper/5 flex items-center justify-center text-2xl">🎨</div>
-<h3 class="font-bold text-espresso mb-1 text-sm md:text-base">ألوان مخصصة</h3>
-<p class="text-xs text-gray-500">اختر لون القماش والوسائد</p>
-</div>
-<div class="feature-card bg-white rounded-2xl p-6 text-center shadow-md border border-cream-dark">
-<div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-copper/10 to-copper/5 flex items-center justify-center text-2xl">💎</div>
-<h3 class="font-bold text-espresso mb-1 text-sm md:text-base">إسفنج عالي الكثافة</h3>
-<p class="text-xs text-gray-500">راحة استثنائية لا تتغير</p>
-</div>
-<div class="feature-card bg-white rounded-2xl p-6 text-center shadow-md border border-cream-dark">
-<div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-copper/10 to-copper/5 flex items-center justify-center text-2xl">🚚</div>
-<h3 class="font-bold text-espresso mb-1 text-sm md:text-base">توصيل سريع</h3>
-<p class="text-xs text-gray-500">شحن مجاني للقاهرة والجيزة</p>
-</div>
-</div>
-</div>
-</section>
+  <!-- WHY MARVEL -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-black text-center text-espresso mb-3">لماذا <span class="text-copper">Marvel
+          Store</span>؟</h2>
+      <div class="copper-divider w-20 mx-auto mb-12"></div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
+        <div
+          class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10">
+            <div class="w-full h-36 md:h-44 overflow-hidden">
+              <img src="assets/sofa-detail-1.jpeg" alt="صناعة متقنة"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy">
+            </div>
+            <div class="px-4 py-4 md:py-5">
+              <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">كنبة ٣ مقاعد ٢٠٠ سم * ٧٥ سم </h3>
+              <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة
+                ارتفاع ٤٥ سم</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10">
+            <div class="w-full h-36 md:h-44 overflow-hidden">
+              <img src="assets/sofa-detail-2.jpeg" alt="ألوان مخصصة"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy">
+            </div>
+            <div class="px-4 py-4 md:py-5">
+              <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">كنبة مقعدين ١٤٠ سم* ٧٥ سم
+              </h3>
+              <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة
+                ارتفاع ٤٥ سم</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10">
+            <div class="w-full h-36 md:h-44 overflow-hidden">
+              <img src="assets/sofa-detail-3.jpeg" alt="إسفنج عالي الكثافة"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy">
+            </div>
+            <div class="px-4 py-4 md:py-5">
+              <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">مقاس ٧٥ سم
+              </h3>
+              <p class="text-xs md:text-sm text-white/50">عمق ٦٠ سم من الداخل بميول للخلف لزيادة الراحة
+                ارتفاع ٤٥ سم</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10">
+            <div class="w-full h-36 md:h-44 overflow-hidden">
+              <img src="assets/sofa-detail-4.jpeg" alt="توصيل سريع"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy">
+            </div>
+            <div class="px-4 py-4 md:py-5">
+              <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">قطاع ستيل
+                ٨ * ٤</h3>
+              <p class="text-xs md:text-sm text-white/50">سمك مللي ونص</p>
+            </div>
+          </div>
+        </div>
 
-<!-- SOFA SELECTION -->
-<section id="configure" class="py-16 md:py-24 bg-white">
-<div class="max-w-6xl mx-auto px-4">
-<h2 class="text-3xl md:text-4xl font-black text-center text-espresso mb-3">اختر لون الكنبة</h2>
-<p class="text-center text-gray-500 mb-2">كنبة ٣ مقاعد + ٢ وسادة جانبية + قاعدة معدنية</p>
-<div class="copper-divider w-20 mx-auto mb-4"></div>
-<p class="text-center text-copper font-bold mb-10">اضغط على الكنبة المناسبة لذوقك 👇</p>
+        <div
+          class="feature-card rounded-2xl text-center shadow-lg border-2 border-copper/30 bg-gradient-to-br from-espresso to-espresso-mid relative overflow-hidden group">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-copper/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10">
+            <div class="w-full h-36 md:h-44 overflow-hidden">
+              <img src="assets/sofa-detail-5.jpeg" alt="توصيل سريع"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy">
+            </div>
+            <div class="px-4 py-4 md:py-5">
+              <h3 class="font-bold text-copper-light mb-1.5 text-base md:text-lg">اسفنج كثافة ٣٠
+                مرونه medium </h3>
+              <p class="text-xs md:text-sm text-white/50">ارتفاع ١٣ سم
+                بطبقة فايبر
+                وقماش وتربرووف</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div id="sofaGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-<!-- Cards rendered by JS -->
-</div>
-</div>
-</section>
+  <!-- SOFA SELECTION -->
+  <section id="configure" class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-black text-center text-espresso mb-3">اختر لون الكنبة</h2>
+      <p class="text-center text-gray-500 mb-2">كنبة ٣ مقاعد + ٢ وسادة جانبية + قاعدة معدنية</p>
+      <div class="copper-divider w-20 mx-auto mb-4"></div>
+      <p class="text-center text-copper font-bold mb-10">اضغط على الكنبة المناسبة لذوقك 👇</p>
 
-<!-- PILLOW COLOR -->
-<section class="py-16 md:py-24">
-<div class="max-w-4xl mx-auto px-4">
-<div class="glass rounded-3xl shadow-xl p-8 md:p-12">
-<h2 class="text-3xl md:text-4xl font-black text-center text-espresso mb-3">اختر لون الوسائد</h2>
-<div class="copper-divider w-20 mx-auto mb-8"></div>
-<div id="pillowSection">
-<div class="flex gap-4 flex-wrap justify-center" id="pillowColors">
-<!-- Rendered by JS -->
-</div>
-<p id="pillowLabel" class="text-center mt-4 text-gray-500 text-sm">الرجاء اختيار لون الوسائد</p>
-</div>
-</div>
-</div>
-</section>
+      <div id="sofaGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Cards rendered by JS -->
+      </div>
+    </div>
+  </section>
 
-<!-- SHIPPING INFO -->
-<section class="py-8">
-<div class="max-w-4xl mx-auto px-4">
-<div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6 text-center">
-<p class="text-green-700 font-bold text-xl mb-1">🚚 الشحن مجاني للقاهرة والجيزة</p>
-<p class="text-green-600 text-sm">المحافظات الأخرى: رسوم الشحن من ٥٠٠ إلى ١٥٠٠ جنيه</p>
-</div>
-</div>
-</section>
 
-<!-- ORDER SUMMARY -->
-<section class="py-8">
-<div class="max-w-4xl mx-auto px-4">
-<div class="glass rounded-3xl shadow-xl p-8">
-<h3 class="text-2xl font-black text-espresso text-center mb-6">ملخص الطلب</h3>
-<div class="max-w-md mx-auto space-y-3">
-<div class="flex justify-between items-center"><span class="text-gray-600">لون الكنبة:</span><span id="sumSofaColor" class="font-bold text-espresso">—</span></div>
-<div class="flex justify-between items-center"><span class="text-gray-600">لون القاعدة المعدنية:</span><span id="sumBaseColor" class="font-bold text-espresso">—</span></div>
-<div class="flex justify-between items-center"><span class="text-gray-600">لون الوسائد:</span><span id="sumPillowColor" class="font-bold text-espresso">—</span></div>
-<div class="flex justify-between items-center"><span class="text-gray-600">سعر المنتج:</span><span id="sumPrice" class="font-bold text-espresso">0 جنيه</span></div>
-<div class="flex justify-between items-center"><span class="text-gray-600">رسوم الشحن:</span><span id="sumShipping" class="font-bold text-espresso">0 جنيه</span></div>
-<div class="border-t-2 border-copper/20 pt-3 mt-3">
-<div class="flex justify-between items-center text-xl"><span class="font-black text-espresso">الإجمالي:</span><span id="sumTotal" class="font-black text-copper text-2xl">0 جنيه</span></div>
-</div>
-</div>
-</div>
-</div>
-</section>
+  <!-- SHIPPING INFO -->
+  <section class="py-8">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6 text-center">
+        <p class="text-green-700 font-bold text-xl mb-1">🚚 الشحن مجاني للقاهرة والجيزة</p>
+        <p class="text-green-600 text-sm">المحافظات الأخرى: رسوم الشحن من ٥٠٠ إلى ١٥٠٠ جنيه</p>
+      </div>
+    </div>
+  </section>
 
-<!-- CUSTOMER FORM -->
-<section class="py-8 pb-32">
-<div class="max-w-4xl mx-auto px-4">
-<div class="glass rounded-3xl shadow-xl p-8 md:p-12">
-<h2 class="text-3xl font-black text-center text-espresso mb-2">أكمل بياناتك</h2>
-<p class="text-center text-gray-500 mb-8">وهنوصلك لحد باب البيت</p>
-<form id="orderForm" class="space-y-5 max-w-xl mx-auto">
-<div>
-<label class="block text-espresso font-bold mb-2">الاسم الكامل *</label>
-<input type="text" id="fullName" required class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base transition bg-white" placeholder="أدخل اسمك الكامل">
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-<label class="block text-espresso font-bold mb-2">رقم الهاتف الأساسي *</label>
-<input type="tel" id="primaryPhone" required class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base transition bg-white" placeholder="01xxxxxxxxx">
-</div>
-<div>
-<label class="block text-espresso font-bold mb-2">رقم هاتف ثانوي</label>
-<input type="tel" id="secondaryPhone" class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base transition bg-white" placeholder="اختياري">
-</div>
-</div>
-<div>
-<label class="block text-espresso font-bold mb-2">المحافظة *</label>
-<select id="city" required onchange="updateSummary()" class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base transition bg-white">
-<option value="">اختر المحافظة</option>
-<option value="القاهرة">القاهرة</option><option value="الجيزة">الجيزة</option>
-<option value="الإسكندرية">الإسكندرية</option><option value="الدقهلية">الدقهلية</option>
-<option value="البحيرة">البحيرة</option><option value="الشرقية">الشرقية</option>
-<option value="القليوبية">القليوبية</option><option value="كفر الشيخ">كفر الشيخ</option>
-<option value="الغربية">الغربية</option><option value="المنوفية">المنوفية</option>
-<option value="الفيوم">الفيوم</option><option value="بني سويف">بني سويف</option>
-<option value="المنيا">المنيا</option><option value="أسيوط">أسيوط</option>
-<option value="سوهاج">سوهاج</option><option value="قنا">قنا</option>
-<option value="أسوان">أسوان</option><option value="الأقصر">الأقصر</option>
-<option value="البحر الأحمر">البحر الأحمر</option><option value="الوادي الجديد">الوادي الجديد</option>
-<option value="مطروح">مطروح</option><option value="شمال سيناء">شمال سيناء</option>
-<option value="جنوب سيناء">جنوب سيناء</option><option value="بورسعيد">بورسعيد</option>
-<option value="دمياط">دمياط</option><option value="الإسماعيلية">الإسماعيلية</option>
-<option value="السويس">السويس</option>
-</select>
-</div>
-<div>
-<label class="block text-espresso font-bold mb-2">العنوان الكامل *</label>
-<textarea id="fullAddress" required rows="3" class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base transition bg-white" placeholder="الشارع، المنطقة، علامات مميزة"></textarea>
-</div>
-<button type="submit" id="submitBtn" class="btn-copper w-full font-black py-4 px-8 rounded-xl text-lg shadow-xl flex items-center justify-center gap-3">
-<span id="btnText">تأكيد الطلب</span>
-<span>📱</span>
-</button>
-</form>
-</div>
-</div>
-</section>
+  <!-- ORDER SUMMARY -->
+  <section class="py-8">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="glass rounded-3xl shadow-xl p-8">
+        <h3 class="text-2xl font-black text-espresso text-center mb-6">ملخص الطلب</h3>
+        <div class="max-w-md mx-auto space-y-3">
+          <div class="flex justify-between items-center"><span class="text-gray-600">لون الكنبة:</span><span
+              id="sumSofaColor" class="font-bold text-espresso">—</span></div>
+          <div class="flex justify-between items-center"><span class="text-gray-600">لون القاعدة المعدنية:</span><span
+              id="sumBaseColor" class="font-bold text-espresso">—</span></div>
+          <div class="flex justify-between items-center"><span class="text-gray-600">لون الوسائد:</span><span
+              id="sumPillowColor" class="font-bold text-espresso">—</span></div>
+          <div class="flex justify-between items-center"><span class="text-gray-600">سعر المنتج:</span><span
+              id="sumPrice" class="font-bold text-espresso">0 جنيه</span></div>
+          <div class="flex justify-between items-center"><span class="text-gray-600">رسوم الشحن:</span><span
+              id="sumShipping" class="font-bold text-espresso">0 جنيه</span></div>
+          <div class="border-t-2 border-copper/20 pt-3 mt-3">
+            <div class="flex justify-between items-center text-xl"><span
+                class="font-black text-espresso">الإجمالي:</span><span id="sumTotal"
+                class="font-black text-copper text-2xl">0 جنيه</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- STICKY MOBILE CTA -->
-<div id="stickyCTA" class="sticky-order bg-white/95 backdrop-blur-md border-t border-copper/10 shadow-2xl px-4 py-3 md:hidden">
-<a href="#configure" class="btn-copper w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-base">
-<span id="stickyText">ابدأ تصميم كنبتك</span>
-<svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-</a>
-</div>
+  <!-- CUSTOMER FORM -->
+  <section class="py-8 pb-32">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="glass rounded-3xl shadow-xl p-8 md:p-12">
+        <h2 class="text-3xl font-black text-center text-espresso mb-2">أكمل بياناتك</h2>
+        <p class="text-center text-gray-500 mb-8">وهنوصلك لحد باب البيت</p>
+        <form id="orderForm" class="space-y-5 max-w-xl mx-auto">
+          <div>
+            <label class="block text-espresso font-bold mb-2">الاسم الكامل *</label>
+            <input type="text" id="fullName" required
+              class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base transition bg-white"
+              placeholder="أدخل اسمك الكامل">
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-espresso font-bold mb-2">رقم الهاتف الأساسي *</label>
+              <input type="tel" id="primaryPhone" required
+                class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base transition bg-white"
+                placeholder="01xxxxxxxxx">
+            </div>
+            <div>
+              <label class="block text-espresso font-bold mb-2">رقم هاتف ثانوي</label>
+              <input type="tel" id="secondaryPhone"
+                class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base transition bg-white"
+                placeholder="اختياري">
+            </div>
+          </div>
+          <div>
+            <label class="block text-espresso font-bold mb-2">المحافظة *</label>
+            <select id="city" required onchange="updateSummary()"
+              class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base transition bg-white">
+              <option value="">اختر المحافظة</option>
+              <option value="القاهرة">القاهرة</option>
+              <option value="الجيزة">الجيزة</option>
+              <option value="الإسكندرية">الإسكندرية</option>
+              <option value="الدقهلية">الدقهلية</option>
+              <option value="البحيرة">البحيرة</option>
+              <option value="الشرقية">الشرقية</option>
+              <option value="القليوبية">القليوبية</option>
+              <option value="كفر الشيخ">كفر الشيخ</option>
+              <option value="الغربية">الغربية</option>
+              <option value="المنوفية">المنوفية</option>
+              <option value="الفيوم">الفيوم</option>
+              <option value="بني سويف">بني سويف</option>
+              <option value="المنيا">المنيا</option>
+              <option value="أسيوط">أسيوط</option>
+              <option value="سوهاج">سوهاج</option>
+              <option value="قنا">قنا</option>
+              <option value="أسوان">أسوان</option>
+              <option value="الأقصر">الأقصر</option>
+              <option value="البحر الأحمر">البحر الأحمر</option>
+              <option value="الوادي الجديد">الوادي الجديد</option>
+              <option value="مطروح">مطروح</option>
+              <option value="شمال سيناء">شمال سيناء</option>
+              <option value="جنوب سيناء">جنوب سيناء</option>
+              <option value="بورسعيد">بورسعيد</option>
+              <option value="دمياط">دمياط</option>
+              <option value="الإسماعيلية">الإسماعيلية</option>
+              <option value="السويس">السويس</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-espresso font-bold mb-2">العنوان الكامل *</label>
+            <textarea id="fullAddress" required rows="3"
+              class="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl text-base transition bg-white"
+              placeholder="الشارع، المنطقة، علامات مميزة"></textarea>
+          </div>
+          <button type="submit" id="submitBtn"
+            class="btn-copper w-full font-black py-4 px-8 rounded-xl text-lg shadow-xl flex items-center justify-center gap-3">
+            <span id="btnText">تأكيد الطلب</span>
+            <span>📱</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-<!-- FOOTER -->
-<footer class="bg-espresso text-white py-8">
-<div class="container mx-auto px-4 text-center">
-<img src="assets/logo1.jpeg" alt="Marvel Store" class="w-12 h-12 mx-auto rounded-lg mb-3 object-cover opacity-80">
-<p class="text-base font-semibold">© 2026 Marvel Store - جميع الحقوق محفوظة</p>
-<p class="mt-1 text-white/40 text-sm">صُنع بإتقان لعشاق الأثاث الفاخر</p>
-</div>
-</footer>
+  <!-- STICKY MOBILE CTA -->
+  <div id="stickyCTA"
+    class="sticky-order bg-white/95 backdrop-blur-md border-t border-copper/10 shadow-2xl px-4 py-3 md:hidden">
+    <a href="#configure"
+      class="btn-copper w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-base">
+      <span id="stickyText">ابدأ تصميم كنبتك</span>
+      <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+  </div>
 
-<script>
-// ===== DATA =====
-const WHATSAPP = '201558782200';
-const BASE_PRICE = 23000;
+  <!-- FOOTER -->
+  <footer class="bg-espresso text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <img src="assets/logo1.jpeg" alt="Marvel Store" class="w-12 h-12 mx-auto rounded-lg mb-3 object-cover opacity-80">
+      <p class="text-base font-semibold">© 2026 Marvel Store - جميع الحقوق محفوظة</p>
+      <p class="mt-1 text-white/40 text-sm">صُنع بإتقان لعشاق الأثاث الفاخر</p>
+    </div>
+  </footer>
 
-const sofas = [
-  {id:'beige',name:'بيج',imgBlack:'assets/sofa-beige-black.jpeg',imgWhite:'assets/sofa-beige-white.jpeg'},
-  {id:'brown',name:'بني',imgBlack:'assets/sofa-brown-black.jpeg',imgWhite:'assets/sofa-brown-white.jpeg'},
-  {id:'gray',name:'رمادي',imgBlack:'assets/sofa-gray-black.jpeg',imgWhite:'assets/sofa-gray-white.jpeg'},
-  {id:'yellow',name:'أصفر',imgBlack:'assets/sofa-yellow-black.jpeg',imgWhite:'assets/sofa-yellow-white.jpeg'},
-  {id:'turquoise',name:'تركواز',imgBlack:'assets/sofa-turquoise-black.jpeg',imgWhite:'assets/sofa-turquoise-white.jpeg'},
-  {id:'green',name:'أخضر',imgBlack:'assets/sofa-green-black.jpeg',imgWhite:'assets/sofa-green-white.jpeg'}
-];
+  <script>
+    // ===== DATA =====
+    const WHATSAPP = '201558782200';
+    const BASE_PRICE = 23000;
 
-const pillowOptions = [
-  {name:'بيج',color:'#EDE4DA'},
-  {name:'أبيض',color:'#FFFFFF',border:true},
-  {name:'أسود',color:'#1a1a1a'},
-  {name:'رمادي',color:'#8D8D8D'},
-  {name:'بني',color:'#8B6914'},
-  {name:'زيتوني',color:'#556B2F'},
-  {name:'كحلي',color:'#0A1F5C'},
-  {name:'تيراكوتا',color:'#C96B3C'}
-];
+    const sofas = [
+      { id: 'beige', name: 'بيج', imgBlack: 'assets/sofa-beige-black.jpeg', imgWhite: 'assets/sofa-beige-white.jpeg' },
+      { id: 'brown', name: 'بني', imgBlack: 'assets/sofa-brown-black.jpeg', imgWhite: 'assets/sofa-brown-white.jpeg' },
+      { id: 'gray', name: 'رمادي', imgBlack: 'assets/sofa-gray-black.jpeg', imgWhite: 'assets/sofa-gray-white.jpeg' },
+      { id: 'yellow', name: 'أصفر', imgBlack: 'assets/sofa-yellow-black.jpeg', imgWhite: 'assets/sofa-yellow-white.jpeg' },
+      { id: 'turquoise', name: 'تركواز', imgBlack: 'assets/sofa-turquoise-black.jpeg', imgWhite: 'assets/sofa-turquoise-white.jpeg' },
+      { id: 'green', name: 'أخضر', imgBlack: 'assets/sofa-green-black.jpeg', imgWhite: 'assets/sofa-green-white.jpeg' }
+    ];
 
-const tier2 = ['الإسكندرية','الدقهلية','البحيرة','الشرقية','القليوبية','كفر الشيخ','الغربية','المنوفية','الفيوم'];
-const tier3 = ['بني سويف','المنيا','أسيوط','سوهاج','قنا','الأقصر','أسوان','البحر الأحمر','جنوب سيناء','بورسعيد','دمياط','الإسماعيلية','السويس'];
+    const pillowOptions = [
+      { name: 'بيج', color: '#EDE4DA' },
+      { name: 'أبيض', color: '#FFFFFF', border: true },
+      { name: 'أسود', color: '#1a1a1a' },
+      { name: 'رمادي', color: '#8D8D8D' },
+      { name: 'بني', color: '#8B6914' },
+      { name: 'زيتوني', color: '#556B2F' },
+      { name: 'كحلي', color: '#0A1F5C' },
+      { name: 'تيراكوتا', color: '#C96B3C' }
+    ];
 
-// ===== STATE =====
-let selectedSofa = null;
-let whiteBase = false;
-let selectedPillow = null;
+    const tier2 = ['الإسكندرية', 'الدقهلية', 'البحيرة', 'الشرقية', 'القليوبية', 'كفر الشيخ', 'الغربية', 'المنوفية', 'الفيوم'];
+    const tier3 = ['بني سويف', 'المنيا', 'أسيوط', 'سوهاج', 'قنا', 'الأقصر', 'أسوان', 'البحر الأحمر', 'جنوب سيناء', 'بورسعيد', 'دمياط', 'الإسماعيلية', 'السويس'];
 
-// ===== RENDER SOFA CARDS =====
-function renderSofas() {
-  const grid = document.getElementById('sofaGrid');
-  grid.innerHTML = sofas.map(s => `
+    // ===== STATE =====
+    let selectedSofa = null;
+    let whiteBase = false;
+    let selectedPillow = null;
+
+    // ===== RENDER SOFA CARDS =====
+    function renderSofas() {
+      const grid = document.getElementById('sofaGrid');
+      grid.innerHTML = sofas.map(s => `
     <div class="sofa-card relative bg-white rounded-2xl shadow-lg overflow-hidden" data-id="${s.id}" onclick="selectSofa('${s.id}')">
       <div class="relative h-56 md:h-64 overflow-hidden bg-cream">
         <img src="${s.imgBlack}" data-black="${s.imgBlack}" data-white="${s.imgWhite}" alt="${s.name}" class="sofa-img w-full h-full object-contain transition-transform duration-500 hover:scale-105" loading="lazy">
@@ -272,141 +553,142 @@ function renderSofas() {
       </div>
     </div>
   `).join('');
-}
+    }
 
-// ===== RENDER PILLOW COLORS =====
-function renderPillows() {
-  const container = document.getElementById('pillowColors');
-  container.innerHTML = pillowOptions.map(p => `
+    // ===== RENDER PILLOW COLORS =====
+    function renderPillows() {
+      const container = document.getElementById('pillowColors');
+      container.innerHTML = pillowOptions.map(p => `
     <div class="text-center" onclick="selectPillowColor('${p.name}')">
-      <div class="pillow-swatch mx-auto" data-name="${p.name}" style="background:${p.color};${p.border?'border:2px solid #ddd':''}"></div>
+      <div class="pillow-swatch mx-auto" data-name="${p.name}" style="background:${p.color};${p.border ? 'border:2px solid #ddd' : ''}"></div>
       <p class="text-xs mt-1.5 font-semibold text-gray-600">${p.name}</p>
     </div>
   `).join('');
-}
+    }
 
-// ===== SELECT SOFA =====
-function selectSofa(id) {
-  if (selectedSofa === id) {
-    selectedSofa = null;
-    whiteBase = false;
-  } else {
-    selectedSofa = id;
-    // Uncheck all base checkboxes, then restore this card's state
-    document.querySelectorAll('.base-checkbox').forEach(cb => { if(cb.id !== 'base-'+id) cb.checked = false; });
-    whiteBase = document.getElementById('base-'+id)?.checked || false;
-  }
-  // Update UI
-  document.querySelectorAll('.sofa-card').forEach(card => {
-    card.classList.toggle('selected', card.dataset.id === selectedSofa);
-  });
-  updateSummary();
-}
+    // ===== SELECT SOFA =====
+    function selectSofa(id) {
+      if (selectedSofa === id) {
+        selectedSofa = null;
+        whiteBase = false;
+      } else {
+        selectedSofa = id;
+        // Uncheck all base checkboxes, then restore this card's state
+        document.querySelectorAll('.base-checkbox').forEach(cb => { if (cb.id !== 'base-' + id) cb.checked = false; });
+        whiteBase = document.getElementById('base-' + id)?.checked || false;
+      }
+      // Update UI
+      document.querySelectorAll('.sofa-card').forEach(card => {
+        card.classList.toggle('selected', card.dataset.id === selectedSofa);
+      });
+      updateSummary();
+    }
 
-// ===== TOGGLE BASE COLOR =====
-function toggleBase(id, checked) {
-  const card = document.querySelector(`.sofa-card[data-id="${id}"]`);
-  const img = card?.querySelector('.sofa-img');
-  if (img) {
-    img.src = checked ? img.dataset.white : img.dataset.black;
-  }
-  if (selectedSofa === id) {
-    whiteBase = checked;
+    // ===== TOGGLE BASE COLOR =====
+    function toggleBase(id, checked) {
+      const card = document.querySelector(`.sofa-card[data-id="${id}"]`);
+      const img = card?.querySelector('.sofa-img');
+      if (img) {
+        img.src = checked ? img.dataset.white : img.dataset.black;
+      }
+      if (selectedSofa === id) {
+        whiteBase = checked;
+        updateSummary();
+      }
+    }
+
+    // ===== SELECT PILLOW COLOR =====
+    function selectPillowColor(name) {
+      selectedPillow = name;
+      document.querySelectorAll('.pillow-swatch').forEach(sw => {
+        sw.classList.toggle('selected', sw.dataset.name === name);
+      });
+      document.getElementById('pillowLabel').textContent = 'اللون المختار: ' + name;
+      document.getElementById('pillowLabel').classList.replace('text-gray-500', 'text-copper');
+      updateSummary();
+    }
+
+    // ===== SHIPPING CALCULATION =====
+    function getShippingCost(city) {
+      if (city === 'القاهرة' || city === 'الجيزة') return 0;
+      if (tier2.includes(city)) return 500;
+      if (tier3.includes(city)) return 1500;
+      return 0;
+    }
+
+    // ===== UPDATE SUMMARY =====
+    function updateSummary() {
+      const city = document.getElementById('city').value;
+      const shipping = getShippingCost(city);
+      const price = selectedSofa ? BASE_PRICE : 0;
+      const total = price + shipping;
+      const sofaObj = sofas.find(s => s.id === selectedSofa);
+
+      document.getElementById('sumSofaColor').textContent = sofaObj ? sofaObj.name : '—';
+      document.getElementById('sumBaseColor').textContent = selectedSofa ? (whiteBase ? 'أبيض' : 'أسود') : '—';
+      document.getElementById('sumPillowColor').textContent = selectedPillow || '—';
+      document.getElementById('sumPrice').textContent = price.toLocaleString() + ' جنيه';
+      document.getElementById('sumShipping').textContent = shipping.toLocaleString() + ' جنيه';
+      document.getElementById('sumTotal').textContent = total.toLocaleString() + ' جنيه';
+      document.getElementById('btnText').textContent = total > 0 ? 'تأكيد الطلب - ' + total.toLocaleString() + ' جنيه' : 'تأكيد الطلب';
+
+      const stickyText = document.getElementById('stickyText');
+      if (stickyText) stickyText.textContent = total > 0 ? 'أكمل الطلب - ' + total.toLocaleString() + ' جنيه' : 'ابدأ تصميم كنبتك';
+    }
+
+    // ===== FORM SUBMIT =====
+    document.getElementById('orderForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!selectedSofa) { alert('⚠️ الرجاء اختيار لون الكنبة'); return; }
+      if (!selectedPillow) { alert('⚠️ الرجاء اختيار لون الوسائد'); return; }
+
+      const name = document.getElementById('fullName').value;
+      const phone1 = document.getElementById('primaryPhone').value;
+      const phone2 = document.getElementById('secondaryPhone').value;
+      const city = document.getElementById('city').value;
+      const address = document.getElementById('fullAddress').value;
+      const sofaObj = sofas.find(s => s.id === selectedSofa);
+      const shipping = getShippingCost(city);
+      const total = BASE_PRICE + shipping;
+      const baseColor = whiteBase ? 'أبيض' : 'أسود';
+
+      let msg = `السلام عليكم ورحمة الله وبركاته \n\n`;
+      msg += ` *طلب جديد - Marvel Store*\n`;
+      msg += `━━━━━━━━━━━━━━━━━\n\n`;
+      msg += ` *تفاصيل المنتج:*\n`;
+      msg += ` • الموديل: كنبة ٣ مقاعد + ٢ وسادة + قاعدة معدنية\n`;
+      msg += ` • لون القماش: ${sofaObj.name}\n`;
+      msg += ` • لون الوسائد: ${selectedPillow}\n`;
+      msg += ` • لون القاعدة المعدنية: ${baseColor}\n\n`;
+      msg += ` *بيانات العميل:*\n`;
+      msg += ` • الاسم: ${name}\n`;
+      msg += ` • الهاتف: ${phone1}\n`;
+      if (phone2) msg += ` • هاتف ثانوي: ${phone2}\n`;
+      msg += ` • المحافظة: ${city}\n`;
+      msg += ` • العنوان: ${address}\n\n`;
+      msg += ` *الفاتورة:*\n`;
+      msg += ` • سعر المنتج: ${BASE_PRICE.toLocaleString()} جنيه\n`;
+      msg += ` • رسوم الشحن: ${shipping.toLocaleString()} جنيه\n`;
+      msg += ` • الإجمالي: ${total.toLocaleString()} جنيه\n\n`;
+      msg += `━━━━━━━━━━━━━━━━━\n`;
+      msg += ` تأكيد الطلب: ${new Date().toLocaleString('ar-EG')}\n`;
+      msg += ` شكراً لاختياركم Marvel Store`;
+
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+    });
+
+    // ===== STICKY CTA VISIBILITY =====
+    const stickyCTA = document.getElementById('stickyCTA');
+    window.addEventListener('scroll', () => {
+      stickyCTA?.classList.toggle('visible', window.scrollY > 500);
+    });
+
+    // ===== INIT =====
+    renderSofas();
+    renderPillows();
     updateSummary();
-  }
-}
-
-// ===== SELECT PILLOW COLOR =====
-function selectPillowColor(name) {
-  selectedPillow = name;
-  document.querySelectorAll('.pillow-swatch').forEach(sw => {
-    sw.classList.toggle('selected', sw.dataset.name === name);
-  });
-  document.getElementById('pillowLabel').textContent = 'اللون المختار: ' + name;
-  document.getElementById('pillowLabel').classList.replace('text-gray-500','text-copper');
-  updateSummary();
-}
-
-// ===== SHIPPING CALCULATION =====
-function getShippingCost(city) {
-  if (city === 'القاهرة' || city === 'الجيزة') return 0;
-  if (tier2.includes(city)) return 500;
-  if (tier3.includes(city)) return 1500;
-  return 0;
-}
-
-// ===== UPDATE SUMMARY =====
-function updateSummary() {
-  const city = document.getElementById('city').value;
-  const shipping = getShippingCost(city);
-  const price = selectedSofa ? BASE_PRICE : 0;
-  const total = price + shipping;
-  const sofaObj = sofas.find(s => s.id === selectedSofa);
-
-  document.getElementById('sumSofaColor').textContent = sofaObj ? sofaObj.name : '—';
-  document.getElementById('sumBaseColor').textContent = selectedSofa ? (whiteBase ? 'أبيض' : 'أسود') : '—';
-  document.getElementById('sumPillowColor').textContent = selectedPillow || '—';
-  document.getElementById('sumPrice').textContent = price.toLocaleString() + ' جنيه';
-  document.getElementById('sumShipping').textContent = shipping.toLocaleString() + ' جنيه';
-  document.getElementById('sumTotal').textContent = total.toLocaleString() + ' جنيه';
-  document.getElementById('btnText').textContent = total > 0 ? 'تأكيد الطلب - ' + total.toLocaleString() + ' جنيه' : 'تأكيد الطلب';
-  
-  const stickyText = document.getElementById('stickyText');
-  if(stickyText) stickyText.textContent = total > 0 ? 'أكمل الطلب - ' + total.toLocaleString() + ' جنيه' : 'ابدأ تصميم كنبتك';
-}
-
-// ===== FORM SUBMIT =====
-document.getElementById('orderForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  if (!selectedSofa) { alert('⚠️ الرجاء اختيار لون الكنبة'); return; }
-  if (!selectedPillow) { alert('⚠️ الرجاء اختيار لون الوسائد'); return; }
-
-  const name = document.getElementById('fullName').value;
-  const phone1 = document.getElementById('primaryPhone').value;
-  const phone2 = document.getElementById('secondaryPhone').value;
-  const city = document.getElementById('city').value;
-  const address = document.getElementById('fullAddress').value;
-  const sofaObj = sofas.find(s => s.id === selectedSofa);
-  const shipping = getShippingCost(city);
-  const total = BASE_PRICE + shipping;
-  const baseColor = whiteBase ? 'أبيض' : 'أسود';
-
-  let msg = `السلام عليكم ورحمة الله وبركاته \n\n`;
-  msg += ` *طلب جديد - Marvel Store*\n`;
-  msg += `━━━━━━━━━━━━━━━━━\n\n`;
-  msg += ` *تفاصيل المنتج:*\n`;
-  msg += ` • الموديل: كنبة ٣ مقاعد + ٢ وسادة + قاعدة معدنية\n`;
-  msg += ` • لون القماش: ${sofaObj.name}\n`;
-  msg += ` • لون الوسائد: ${selectedPillow}\n`;
-  msg += ` • لون القاعدة المعدنية: ${baseColor}\n\n`;
-  msg += ` *بيانات العميل:*\n`;
-  msg += ` • الاسم: ${name}\n`;
-  msg += ` • الهاتف: ${phone1}\n`;
-  if (phone2) msg += ` • هاتف ثانوي: ${phone2}\n`;
-  msg += ` • المحافظة: ${city}\n`;
-  msg += ` • العنوان: ${address}\n\n`;
-  msg += ` *الفاتورة:*\n`;
-  msg += ` • سعر المنتج: ${BASE_PRICE.toLocaleString()} جنيه\n`;
-  msg += ` • رسوم الشحن: ${shipping.toLocaleString()} جنيه\n`;
-  msg += ` • الإجمالي: ${total.toLocaleString()} جنيه\n\n`;
-  msg += `━━━━━━━━━━━━━━━━━\n`;
-  msg += ` تأكيد الطلب: ${new Date().toLocaleString('ar-EG')}\n`;
-  msg += ` شكراً لاختياركم Marvel Store`;
-
-  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
-});
-
-// ===== STICKY CTA VISIBILITY =====
-const stickyCTA = document.getElementById('stickyCTA');
-window.addEventListener('scroll', () => {
-  stickyCTA?.classList.toggle('visible', window.scrollY > 500);
-});
-
-// ===== INIT =====
-renderSofas();
-renderPillows();
-updateSummary();
-</script>
+  </script>
 </body>
+
 </html>

@@ -680,7 +680,7 @@
               <option value="">اختر المحافظة</option>
               <option value="القاهرة">القاهرة</option>
               <option value="الجيزة">الجيزة</option>
-              <option value="الإسكندرية">الإسكندرية</option>
+              <option value="القاهرة">الساحل الشمالي</option>
               <option value="الدقهلية">الدقهلية</option>
               <option value="البحيرة">البحيرة</option>
               <option value="الشرقية">الشرقية</option>
@@ -698,7 +698,6 @@
               <option value="الأقصر">الأقصر</option>
               <option value="البحر الأحمر">البحر الأحمر</option>
               <option value="الوادي الجديد">الوادي الجديد</option>
-              <option value="مطروح">مطروح</option>
               <option value="شمال سيناء">شمال سيناء</option>
               <option value="جنوب سيناء">جنوب سيناء</option>
               <option value="بورسعيد">بورسعيد</option>
@@ -765,8 +764,8 @@
 
 
 
-    const tier2 = ['الإسكندرية', 'الدقهلية', 'البحيرة', 'الشرقية', 'القليوبية', 'كفر الشيخ', 'الغربية', 'المنوفية', 'الفيوم'];
-    const tier3 = ['بني سويف', 'المنيا', 'أسيوط', 'سوهاج', 'قنا', 'الأقصر', 'أسوان', 'البحر الأحمر', 'جنوب سيناء', 'بورسعيد', 'دمياط', 'الإسماعيلية', 'السويس', 'الوادي الجديد', 'مطروح'];
+    const tier2 = ['الدقهلية', 'البحيرة', 'الشرقية', 'القليوبية', 'كفر الشيخ', 'الغربية', 'المنوفية', 'الفيوم'];
+    const tier3 = ['بني سويف', 'المنيا', 'أسيوط', 'سوهاج', 'قنا', 'الأقصر', 'أسوان', 'البحر الأحمر', 'جنوب سيناء', 'بورسعيد', 'دمياط', 'الإسماعيلية', 'السويس', 'الوادي الجديد'];
 
     // ===== STATE =====
     let selectedSofa = null;
@@ -833,7 +832,7 @@
 
     // ===== SHIPPING CALCULATION =====
     function getShippingCost(city) {
-      if (city === 'القاهرة' || city === 'الجيزة') return 0;
+      if (city === 'القاهرة' || city === 'الجيزة' || city === 'الساحل الشمالي') return 0;
       if (tier2.includes(city)) return 500;
       if (tier3.includes(city)) return 1500;
       return 0;
